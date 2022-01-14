@@ -24,9 +24,9 @@ for m in months:
         grouper[m]="Snow"
     else:
         grouper[m]="No Snow"
-
-st.text('This is the resulting grouper dictionary.')
-grouper
+if st.checkbox('Show the resulting grouper dictionary'):
+    st.text('This is the resulting grouper dictionary.')
+    grouper
 
 st.text("Use the grouper to create a new column")
 st.code("df['snow'] = df.month.map(grouper)")
@@ -53,6 +53,26 @@ g.set_ylabels('Passengers');
 g.legend.set_title('Snow or Not')
 g.fig.suptitle('Grouping Categorical Columns')
 st.pyplot(g)
+
+if st.checkbox('Show code for chart'):
+    st.subheader('Chart Code')
+    st.code("""
+        g = sns.relplot(x='year', y='passengers',
+                        data=df_summed,
+                        hue='snow',
+                        #col='snow',
+                        aspect=1.7,
+                        height=3,
+                        palette=['blue', 'orange'],
+                        kind='line'
+                       )
+        #g.set_titles(col_template="")
+        g.set_xlabels("Year")
+        g.set_ylabels('Passengers');
+        g.legend.set_title('Snow or Not')
+        g.fig.suptitle('Grouping Categorical Columns')
+        st.pyplot(g)
+    """)
 
 st.header('Distribution based Grouping')
 
