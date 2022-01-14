@@ -1,0 +1,11 @@
+env3.6/*
+*.swp
+*.png
+*.un~
+__pycache__/
+Untitled*
+.ipynb_checkpoints
+
+#Security
+dcoop.py
+minorlab.py
